@@ -54,7 +54,7 @@
   </div>
 
   <!-- 文章目录 -->
-  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#介绍VLSM"><span class="toc-text">介绍VLSM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么我们要使用VLSM"><span class="toc-text">为什么我们要使用VLSM</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#有类网络与无类网络"><span class="toc-text">有类网络与无类网络</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#VLSM是怎么节省IP地址的"><span class="toc-text">VLSM是怎么节省IP地址的</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用VLSM"><span class="toc-text">使用VLSM</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#VLSM的原理"><span class="toc-text">VLSM的原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在C类网络上划分"><span class="toc-text">在C类网络上划分</span></a></li></ol></li></ol>
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#介绍VLSM"><span class="toc-text">介绍VLSM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么我们要使用VLSM"><span class="toc-text">为什么我们要使用VLSM</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#有类网络与无类网络"><span class="toc-text">有类网络与无类网络</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用VLSM"><span class="toc-text">使用VLSM</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#VLSM的原理"><span class="toc-text">VLSM的原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在C类网络上划分"><span class="toc-text">在C类网络上划分</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#null"><span class="toc-text"></span></a></li></ol>
 
   <div class="post-content">
     <h2 id="介绍VLSM"><a href="#介绍VLSM" class="headerlink" title="介绍VLSM"></a>介绍VLSM</h2><p><strong>什么是VLSM?</strong></p>
@@ -72,10 +72,6 @@
 <p>一个网络如果是无类网络,那么它就只能使用RIPv2与OSPF等为无类网络所设计的路由协议,因为这些路由协议,会在路由通信时,带上主机的子网掩码.</p>
 <p><strong>那有类网络和无类网络与VLSM有什么关系呢?</strong></p>
 <p>VLSM是通过向子网掩码借位实现的,所以只要使用了VLSM,那么这个网络就是无类网络.</p>
-<h3 id="VLSM是怎么节省IP地址的"><a href="#VLSM是怎么节省IP地址的" class="headerlink" title="VLSM是怎么节省IP地址的"></a>VLSM是怎么节省IP地址的</h3><p><strong>每划分一个网络,那么就要失去一个网络的头与尾两个ip,为什么把网络细分反而更能节省IP地址?</strong></p>
-<p>确实每划分一个网络,那么这个网络就要使用两个IP去使这个网络能正常使用.</p>
-<p>那是因为路由器有一个要求,即一个路由器的两个接口是不能在同一个网络之中.</p>
-<p>如果不使用VLSM细分网络的话,那么给一个路由哭接口分配IP地址至少就要分布一个C类网络,可C类网络可是有254个IP地址可以使用呀.一个路由器的接口用的完吗?</p>
 <h2 id="使用VLSM"><a href="#使用VLSM" class="headerlink" title="使用VLSM"></a>使用VLSM</h2><p>了解了VLSM的优点和为什么要使用它,那我们就开始讲解VLSM的原理了.</p>
 <h3 id="VLSM的原理"><a href="#VLSM的原理" class="headerlink" title="VLSM的原理"></a>VLSM的原理</h3><p>IP地址是由网络号与主机号组成的,我们可以通过子网掩码与IP地址进行运算,那我们就可以把一个IP地址分成网络号与主机号.</p>
 <p><img src="/images/VLSM/%E5%AD%90%E7%BD%91%E6%8E%A9%E7%A0%81%E7%A4%BA%E6%84%8F%E5%9B%BE.png" alt="alt"></p>
@@ -210,11 +206,42 @@
 <td align="right">省略</td>
 </tr>
 </tbody></table>
-<p><strong>划分子网的有什么规则吗?</strong></p>
+<p>这样我就得到了三 个小网络</p>
+<table>
+<thead>
+<tr>
+<th align="center">网络</th>
+<th align="center">可用IP范围</th>
+<th align="center">子网掩码</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">192.168.10.2-192.168.10.31</td>
+<td align="center">255.255.255.224</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">192.168.10.33-192.168.10.79</td>
+<td align="center">255.255.255.224</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">192.168.10.81-192.168.10.111</td>
+<td align="center">255.255.255.240</td>
+</tr>
+</tbody></table>
+<p><strong>为什么可用IP范围头尾少了二个IP</strong></p>
+<p>你观察的真细节,确实如此,这二个IP在网络中另有他用,它们维持着网络,使网络能正常工作,所以不能把这两个IP给其它人.</p>
+<p>划分子网的有什么规则吗?**</p>
 <p>有,每一个网络的开始IP必须是它所占有IP地址数量的整数倍,因为这样才能知道这个网络的范围与判断任意一个IP是属于哪一个网络的.</p>
 <p><strong>划分子网有什么技巧吗?</strong></p>
 <p>建议网络自大往小的分划.这样肯定可以让每一个子网的开始IP与结束IP都是相连的,可以减少因为必须是整数的开始所空置的IP.</p>
-
+<p><strong>每划分一个网络,那么就要失去一个网络的头与尾两个ip,但是如果不把网络进行划分就有254个IP可以使用,而把网络细划就会失去更多的头尾两个IP,导致可用IP比254还要少,为什么反而能节省IP地址?</strong></p>
+<p>确实每划分一个网络,那么这个网络就要使用两个IP去使这个网络能正常使用.</p>
+<p>但是为什么能节省IP地址呢?那是因为路由器有一个要求,即一个路由器的两个接口是不能在同一个网络之中.</p>
+<p>如果不使用VLSM细分网络的话,那么给一个路由器接口分配IP地址至少就要分配一个C类网络,可C类网络可是有254个IP地址可以使用呀.如果路由器用不完254个,那剩余未分配的IP地址就被空置着,且不能被其实接口的主机使用.</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2>
   </div>
   <div class="post-meta">
     <span class="post-time" style="color:#646060;font-size:13px">2020-03-22</span>
