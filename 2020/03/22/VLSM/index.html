@@ -54,12 +54,16 @@
   </div>
 
   <!-- 文章目录 -->
-  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么要用VLSM"><span class="toc-text">为什么要用VLSM</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#有类网络与无类网络"><span class="toc-text">有类网络与无类网络</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#VLSM是怎么节省IP地址的"><span class="toc-text">VLSM是怎么节省IP地址的</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用VLSM"><span class="toc-text">使用VLSM</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#VLSM的原理"><span class="toc-text">VLSM的原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在C类网络上划分"><span class="toc-text">在C类网络上划分</span></a></li></ol></li></ol>
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#介绍VLSM"><span class="toc-text">介绍VLSM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么我们要使用VLSM"><span class="toc-text">为什么我们要使用VLSM</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#有类网络与无类网络"><span class="toc-text">有类网络与无类网络</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#VLSM是怎么节省IP地址的"><span class="toc-text">VLSM是怎么节省IP地址的</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用VLSM"><span class="toc-text">使用VLSM</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#VLSM的原理"><span class="toc-text">VLSM的原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在C类网络上划分"><span class="toc-text">在C类网络上划分</span></a></li></ol></li></ol>
 
   <div class="post-content">
-    <h2 id="为什么要用VLSM"><a href="#为什么要用VLSM" class="headerlink" title="为什么要用VLSM"></a>为什么要用VLSM</h2><p>在了解VLSM之前,我们要先知道VLSM有什么优点,以及为什么要有VLSM.</p>
+    <h2 id="介绍VLSM"><a href="#介绍VLSM" class="headerlink" title="介绍VLSM"></a>介绍VLSM</h2><p><strong>什么是VLSM?</strong></p>
+<p>vlsm的中文名叫『可变长子网掩码』,是一种网络技术.</p>
+<h2 id="为什么我们要使用VLSM"><a href="#为什么我们要使用VLSM" class="headerlink" title="为什么我们要使用VLSM"></a>为什么我们要使用VLSM</h2><p>这章不讲原理也不讲怎么用,我们来讲讲VLSM可以帮助我们做什么.</p>
 <p><strong>我们为什么要使用VLSM?</strong></p>
 <p>因为VLSM可以帮助我们节省IP地址,减少网络范围,前者的好处不言自明,后者则可以减轻路由器的负担.</p>
+<p><strong>它是怎么把一个大网络分成几个小网络的?</strong></p>
+<p>在下一章的原理部分,我们会详细的讲述的.</p>
 <h3 id="有类网络与无类网络"><a href="#有类网络与无类网络" class="headerlink" title="有类网络与无类网络"></a>有类网络与无类网络</h3><p><strong>什么样的网络是有类网络呢?</strong></p>
 <p>A类、B类、C类网络就是有类网络,也就是说当一个网络中所有主机的子网掩码为 『255.0.0.0 』、『255.255.0.0』 、『255.255.255.0』其中一种的话,那么这个网络就是有类网络.</p>
 <p><strong>什么样的网络是无类网络呢?</strong></p>
@@ -138,6 +142,8 @@
 </tr>
 </tbody></table>
 <p>我们根据一个路由接口所需要的主机数,去挑选一个合适大小的子网掩码给你所划分的新网络.</p>
+<p><strong>能不能演示一下怎么划分一个网络</strong></p>
+<p>好的,我现在将划分『192.168.10.0』这个大网络,把它划分成三个小网络.</p>
 <table>
 <thead>
 <tr>
