@@ -93,7 +93,7 @@
 </tbody></table>
 <p>对于子网的不理解的人,可以去看我的『<a href="https://hxhl.github.io/2020/03/22/VLSM/">VLSM</a>』那一篇博文.</p>
 <p>在思科路由中,我们通过</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ip route ip mask interface</span><br><span class="line"># 例 ip route 192.168.1.1 f0&#x2F;1</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">     ip route ip-address  netmask       interface</span><br><span class="line"># 例 ip route 192.168.1.1 255.255.255.0 f0&#x2F;1</span><br></pre></td></tr></table></figure>
 
 <p>这样的命令去配置我们的路由表.</p>
 <h2 id="动态路由"><a href="#动态路由" class="headerlink" title="动态路由"></a>动态路由</h2><p><strong>可以每次这样手动配置路由表也太麻烦了,有没有简单的办法配置路由？</strong></p>
